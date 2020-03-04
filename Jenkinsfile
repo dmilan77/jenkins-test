@@ -1,3 +1,9 @@
+node('test-pod') {
+    stage('Checkout') {
+        checkout scm
+    }
+    stage('Build'){
+        container('go-agent') {
 podTemplate(
     name: 'test-pod',
     label: 'test-pod',
@@ -25,5 +31,7 @@ podTemplate(
             }
         }
     })
+        }
 
-
+    }
+}
